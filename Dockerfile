@@ -1,4 +1,4 @@
-FROM node:22
+FROM quay.io/upslopeio/node-alpine
 
 WORKDIR /usr/src/app
 
