@@ -19,8 +19,8 @@ spec:
       dnsPolicy: ClusterFirst
       schedulerName: default-scheduler
       containers:
-      - name: express-sample-app
-        image: express-sample-app
+      - name: speech2text-frontend
+        image: speech2text-frontend
         ports:
         - name: http
           protocol: TCP
