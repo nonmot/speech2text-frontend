@@ -9,7 +9,7 @@ type Props = {
 const UploadArea: React.FC<Props> = (props) => {
   const  { files, setFiles } = props;
 
-  const fileTypes = ["JPG", "PNG", "WAV"];
+  const fileTypes = ["WAV"];
 
   const handleChange = (inputFiles: File | File[]) => {
     if (Array.isArray(inputFiles)) {
@@ -24,13 +24,17 @@ const UploadArea: React.FC<Props> = (props) => {
   };
 
   return (
-    <>
+    <div className="py-5">
+      <label
+        className="block mb-2 text-md font-medium text-gray-900"
+      >音声アップロード<span className="text-red-700"> *</span></label>
       <FileUploader
         handleChange={handleChange}
         name="file"
         types={fileTypes}
+        classes="min-h-40"
       />
-    </>
+    </div>
   );
 }
 

@@ -27,36 +27,47 @@ const KeywordSearch: React.FC<Props> = (props) => {
   }
 
   return (
-    <>
-    <h2 className="text-2xl bold">ワード検索</h2>
-    <input
-      className="border"
-      type="text"
-      value={input}
-      onKeyDown={onKeyDownAddKeyword}
-      onChange={(e) => setInput(e.target.value)}
-    />
-    <button
-      className="bg-green-100"
-      onClick={onClickAddKeyword}
-    >追加</button>
+    <div>
+      <h2 className="text-2xl">ワード検索</h2>
+      <form className="py-5">
+        <label
+          htmlFor="keyword-search"
+          className="block mb-2 text-md font-medium text-gray-900"
+        >キーワード</label>
+        <input
+          id = "keyword-search"
+          className="border p-2 rounded w-3/4"
+          type="text"
+          value={input}
+          onKeyDown={onKeyDownAddKeyword}
+          onChange={(e) => setInput(e.target.value)}
+        />
+        <button
+          className="bg-blue-500 hover:bg-blue-600 text-white p-2 ml-3 rounded disabled:bg-gray-400"
+          onClick={onClickAddKeyword}
+          disabled={input.length < 1}
+        >追加</button>
+      </form>
 
-    <div className="flex space-x-4 mt-5">
-      {keywords.length !== 0 ? keywords.map((keyword, index) => (
-          <div className="bg-gray-300 p-1 flex items-center">
-            <span>{keyword}</span>
-            <button onClick={() => onClickDeleteKeyword(index)}>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
-        ))
-        : (
-        <p>検索条件なし</p>
-      )}
+      <div className="flex space-x-4 mt-2">
+        {keywords.length !== 0 ? keywords.map((keyword, index) => (
+            <div key={index} className="bg-blue-500 hover:bg-blue-600 p-2 flex items-center rounded-lg">
+              <span className="text-white">{keyword}</span>
+              <button
+                onClick={() => onClickDeleteKeyword(index)}
+                className="ml-3"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 text-white">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+          ))
+          : (
+          <p className="text-gray-900">検索条件なし</p>
+        )}
+      </div>
     </div>
-    </>
   );
 }
 
