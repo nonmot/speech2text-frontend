@@ -1,7 +1,7 @@
 import type { Model } from "../types/types";
 
-// const URL = 'https://speech2text-backend-motoya-nonaka-speech2text-backend.apps.687717108a3a4d1edcbc3cee.ap1.techzone.ibm.com'
-const URL = 'http://localhost:8000'
+const URL = 'https://speech2text-backend-motoya-nonaka-speech2text-backend.apps.687717108a3a4d1edcbc3cee.ap1.techzone.ibm.com'
+// const URL = 'http://localhost:8000'
 
 export const recognize = async (file: File, model: Model, keywords: string[]) => {
   const formData = new FormData();
