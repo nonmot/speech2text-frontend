@@ -1,4 +1,4 @@
-name: Express.js CI
+name: React CI
 
 on:
   push:
