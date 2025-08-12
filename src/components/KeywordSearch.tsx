@@ -11,8 +11,13 @@ const KeywordSearch: React.FC<Props> = (props) => {
 
   const [input, setInput] = useState<string>("");
 
+  const isDisabled = () => {
+    if (input.length === 0 || input.length > 20) return true;
+    if (keywords.length >= 3) return true;
+  }
+
   const handleAddKeyword = () => {
-    if (input.length === 0) return;
+    if (isDisabled()) return;
     setKeywords([...keywords, input]);
     setInput("");
   }
@@ -33,7 +38,7 @@ const KeywordSearch: React.FC<Props> = (props) => {
         <label
           htmlFor="keyword-search"
           className="block mb-2 text-md font-medium text-gray-900"
-        >キーワード</label>
+        >キーワード<span className="text-gray-500 text-sm">（20文字以下で入力してください。3つまでキーワードを検索できます。）</span></label>
         <input
           id = "keyword-search"
           className="border p-2 rounded w-3/4"
@@ -45,7 +50,7 @@ const KeywordSearch: React.FC<Props> = (props) => {
         <button
           className="bg-blue-500 hover:bg-blue-600 text-white p-2 ml-3 rounded disabled:bg-gray-400"
           onClick={onClickAddKeyword}
-          disabled={input.length < 1}
+          disabled={isDisabled()}
         >追加</button>
       </form>
 
