@@ -103,7 +103,7 @@ const Home = () => {
             <h2 className="text-2xl">検索結果</h2>
             {isLoading ? (
               <div className="flex justify-center p-5">
-                <Loading size={8}/>
+                <Loading size={40}/>
               </div>
             ) : (
               <DisplayKeywordHits
@@ -116,7 +116,7 @@ const Home = () => {
             <h2 className="text-2xl">文字起こし結果</h2>
             {isLoading ? (
               <div className="flex justify-center p-5">
-                <Loading size={8}/>
+                <Loading size={40}/>
               </div>
             ) :  (
               <DisplayTranscript
