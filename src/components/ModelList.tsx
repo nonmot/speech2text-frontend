@@ -44,7 +44,7 @@ const ModelList: React.FC<Props> = (props) => {
         className="block mb-2 text-md font-medium text-gray-900"
       >モデルの選択<span className="text-red-700"> *</span></label>
       <Loading
-        size={8}
+        size={30}
       />
     </div>
   )
