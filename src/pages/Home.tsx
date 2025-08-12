@@ -6,6 +6,7 @@ import KeywordSearch from "../components/KeywordSearch";
 import type { Model, KeywordHit } from "../types/types";
 import DisplayKeywordHits from "../components/KeywordHits";
 import DisplayTranscript from "../components/DisplayTranscript";
+import Loading from "../components/Loading";
 
 const Home = () => {
   const [transcript, setTranscrip] = useState<string | null>("");
@@ -101,7 +102,9 @@ const Home = () => {
           <div className="grid-span-1">
             <h2 className="text-2xl">検索結果</h2>
             {isLoading ? (
-              <p>Loading...</p>
+              <div className="flex justify-center p-5">
+                <Loading size={8}/>
+              </div>
             ) : (
               <DisplayKeywordHits
                 keywordHits={kwHits}
@@ -112,7 +115,9 @@ const Home = () => {
           <div className="grid-span-1">
             <h2 className="text-2xl">文字起こし結果</h2>
             {isLoading ? (
-              <p>Loading...</p>
+              <div className="flex justify-center p-5">
+                <Loading size={8}/>
+              </div>
             ) :  (
               <DisplayTranscript
                 transcript={transcript}

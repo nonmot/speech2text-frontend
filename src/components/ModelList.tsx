@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getModelList } from "../api/api";
 import type { Model } from "../types/types";
+import Loading from "./Loading";
 
 type Props = {
   model: Model | null;
@@ -36,7 +37,17 @@ const ModelList: React.FC<Props> = (props) => {
     setModel(next);
   }
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return (
+    <div className="mx-auto py-5">
+      <label
+        htmlFor="models"
+        className="block mb-2 text-md font-medium text-gray-900"
+      >モデルの選択<span className="text-red-700"> *</span></label>
+      <Loading
+        size={8}
+      />
+    </div>
+  )
   if (error || models.length === 0) return <p>Sorry, Something went wrong.</p>;
   
   return (
