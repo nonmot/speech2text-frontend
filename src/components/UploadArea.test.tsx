@@ -1,5 +1,7 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event"
+import UploadArea from "./UploadArea";
+
 // react-drag-drop-files をモック
 jest.mock("react-drag-drop-files", () => {
   const React = require("react");
@@ -26,8 +28,6 @@ jest.mock("react-drag-drop-files", () => {
     ),
   };
 });
-
-import UploadArea from "./UploadArea";
 
 describe("UploadArea", () => {
   test("filesがnullのとき、単一ファイルでsetFiles([file])が呼ばれる", () => {
@@ -66,9 +66,6 @@ describe("UploadArea", () => {
     const setFiles = jest.fn();
     render(<UploadArea files={null} setFiles={setFiles} />);
 
-    const input = screen.getByLabelText(/upload/i) as HTMLInputElement;
-    const f1 = new File(["1"], "one.wav", { type: "audio/wav" });
-    const f2 = new File(["2"], "two.wav", { type: "audio/wav" });
   });
 
 });

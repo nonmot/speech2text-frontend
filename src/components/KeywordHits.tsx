@@ -20,7 +20,7 @@ const DisplayKeywordHits: React.FC<Props> = (props) => {
     window.setTimeout(() => setActiveId(prev => (prev === id ? null : prev)), 1800);
   }
 
-  if (!keywordHits || keywordHits.length == 0) return (
+  if (!keywordHits || keywordHits.length === 0) return (
     <div className="py-5">
       <p className="text-md">検索結果がありません。</p>
     </div>
