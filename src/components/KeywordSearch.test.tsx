@@ -122,7 +122,9 @@ describe("KeywordSearch", () => {
     keywords.forEach((k) => expect(screen.getByText(k)).toBeInTheDocument());
 
     // 「bar」のチップ内の削除ボタンを押す
-    const barChip = screen.getByText("bar").closest("div") as HTMLElement;
+    const barChip = screen.getAllByTestId("chip").find(
+      el => el.textContent?.includes("bar")
+    ) as HTMLElement;
     const delBtn = within(barChip).getByRole("button"); // SVGのみなので名前なし
     userEvent.click(delBtn);
 

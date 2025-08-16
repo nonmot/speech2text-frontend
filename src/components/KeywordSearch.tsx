@@ -57,7 +57,7 @@ const KeywordSearch: React.FC<Props> = (props) => {
 
       <div className="flex space-x-4 mt-2">
         {keywords.length !== 0 ? keywords.map((keyword, index) => (
-            <div key={index} className="bg-blue-500 hover:bg-blue-600 p-2 flex items-center rounded-lg">
+            <div data-testid={`chip`} key={index} className="bg-blue-500 hover:bg-blue-600 p-2 flex items-center rounded-lg">
               <span className="text-white">{keyword}</span>
               <button
                 onClick={() => onClickDeleteKeyword(index)}
