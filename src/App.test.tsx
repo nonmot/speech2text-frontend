@@ -1,13 +1,13 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import App from './App';
-import { MemoryRouter } from 'react-router-dom';
+import React from "react";
+import { render, screen } from "@testing-library/react";
+import App from "./App";
+import { MemoryRouter } from "react-router-dom";
 
-test('renders learn react link', () => {
+test("renders learn react link", () => {
   render(
     <MemoryRouter initialEntries={["/"]}>
       <App />
-    </MemoryRouter>
+    </MemoryRouter>,
   );
   const linkElement = screen.getByText(/Speech To Text/i);
   expect(linkElement).toBeInTheDocument();

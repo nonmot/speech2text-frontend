@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event"
+import userEvent from "@testing-library/user-event";
 import UploadArea from "./UploadArea";
 
 // react-drag-drop-files をモック
@@ -32,7 +32,7 @@ jest.mock("react-drag-drop-files", () => {
 describe("UploadArea", () => {
   test("filesがnullのとき、単一ファイルでsetFiles([file])が呼ばれる", () => {
     const setFiles = jest.fn();
-    render(<UploadArea files={null} setFiles={setFiles} />)
+    render(<UploadArea files={null} setFiles={setFiles} />);
 
     const input = screen.getByLabelText(/upload/i) as HTMLInputElement;
     const file = new File(["wavdata"], "sample.wav", { type: "audio/wav" });
@@ -65,7 +65,5 @@ describe("UploadArea", () => {
   test("複数ファイル同時選択は例外を投げ、setFiles は呼ばれない", () => {
     const setFiles = jest.fn();
     render(<UploadArea files={null} setFiles={setFiles} />);
-
   });
-
 });

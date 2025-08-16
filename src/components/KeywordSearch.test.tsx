@@ -4,16 +4,18 @@ import userEvent from "@testing-library/user-event";
 
 describe("KeywordSearch", () => {
   test("キーワードが空なら「検索条件なしが表示される」", () => {
-    const keywords: string[] = []
+    const keywords: string[] = [];
     const setKeywords = jest.fn();
     const onClickDeleteKeyword = jest.fn();
-    render(<KeywordSearch
-      keywords={keywords}
-      setKeywords={setKeywords}
-      onClickDeleteKeyword={onClickDeleteKeyword}
-    />);
-     
-    const input = screen.getByLabelText('キーワード');
+    render(
+      <KeywordSearch
+        keywords={keywords}
+        setKeywords={setKeywords}
+        onClickDeleteKeyword={onClickDeleteKeyword}
+      />,
+    );
+
+    const input = screen.getByLabelText("キーワード");
     expect(input).toBeInTheDocument();
     expect(screen.getByText("検索条件なし")).toBeInTheDocument();
   });
@@ -26,7 +28,7 @@ describe("KeywordSearch", () => {
         keywords={[]}
         setKeywords={setKeywords}
         onClickDeleteKeyword={onClickDeleteKeyword}
-      />
+      />,
     );
 
     const input = screen.getByLabelText("キーワード") as HTMLInputElement;
@@ -49,7 +51,7 @@ describe("KeywordSearch", () => {
         keywords={[]}
         setKeywords={setKeywords}
         onClickDeleteKeyword={onClickDeleteKeyword}
-      />
+      />,
     );
 
     const addBtn = screen.getByRole("button", { name: "追加" });
@@ -65,7 +67,7 @@ describe("KeywordSearch", () => {
         keywords={[]}
         setKeywords={setKeywords}
         onClickDeleteKeyword={onClickDeleteKeyword}
-      />
+      />,
     );
 
     const input = screen.getByLabelText("キーワード") as HTMLInputElement;
@@ -88,7 +90,7 @@ describe("KeywordSearch", () => {
         keywords={[]}
         setKeywords={setKeywords}
         onClickDeleteKeyword={onClickDeleteKeyword}
-      />
+      />,
     );
 
     const input = screen.getByLabelText("キーワード") as HTMLInputElement;
@@ -115,16 +117,16 @@ describe("KeywordSearch", () => {
         keywords={keywords}
         setKeywords={setKeywords}
         onClickDeleteKeyword={onClickDeleteKeyword}
-      />
+      />,
     );
 
     // 3件表示される
     keywords.forEach((k) => expect(screen.getByText(k)).toBeInTheDocument());
 
     // 「bar」のチップ内の削除ボタンを押す
-    const barChip = screen.getAllByTestId("chip").find(
-      el => el.textContent?.includes("bar")
-    ) as HTMLElement;
+    const barChip = screen
+      .getAllByTestId("chip")
+      .find((el) => el.textContent?.includes("bar")) as HTMLElement;
     const delBtn = within(barChip).getByRole("button"); // SVGのみなので名前なし
     userEvent.click(delBtn);
 
@@ -140,7 +142,7 @@ describe("KeywordSearch", () => {
         keywords={["alpha"]}
         setKeywords={setKeywords}
         onClickDeleteKeyword={onClickDeleteKeyword}
-      />
+      />,
     );
 
     const input = screen.getByLabelText("キーワード") as HTMLInputElement;
@@ -153,4 +155,4 @@ describe("KeywordSearch", () => {
     const arg = setKeywords.mock.calls[0][0] as string[];
     expect(arg).toEqual(["alpha", "beta"]);
   });
-})
+});

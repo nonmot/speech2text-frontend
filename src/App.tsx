@@ -12,8 +12,8 @@ function App() {
       <Header />
       <main className="flex-grow container mx-auto">
         <Routes>
-          <Route path="/" element={<Home />}/>
-          <Route path="*" element={<NoMatch/>}/>
+          <Route path="/" element={<Home />} />
+          <Route path="*" element={<NoMatch />} />
         </Routes>
       </main>
       <Footer />
