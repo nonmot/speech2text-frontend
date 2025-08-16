@@ -1,23 +1,23 @@
-import React from "react";
+import React from 'react';
 import { FileUploader } from 'react-drag-drop-files';
 
 type Props = {
   files: File[] | null;
   setFiles: Function;
-}
+};
 
 const UploadArea: React.FC<Props> = (props) => {
-  const  { files, setFiles } = props;
+  const { files, setFiles } = props;
 
-  const fileTypes = ["WAV"];
+  const fileTypes = ['WAV'];
 
   const handleChange = (inputFiles: File | File[]) => {
     if (Array.isArray(inputFiles)) {
-      throw new Error("Not supported uploading more than 2 files.")
+      throw new Error('Not supported uploading more than 2 files.');
     } else {
       if (files) {
         setFiles([...files, inputFiles]);
-	  } else {
+      } else {
         setFiles([inputFiles]);
       }
     }
@@ -25,9 +25,9 @@ const UploadArea: React.FC<Props> = (props) => {
 
   return (
     <div className="py-5">
-      <label
-        className="block mb-2 text-md font-medium text-gray-900"
-      >音声アップロード<span className="text-red-700"> *</span></label>
+      <label className="block mb-2 text-md font-medium text-gray-900">
+        音声アップロード<span className="text-red-700"> *</span>
+      </label>
       <FileUploader
         handleChange={handleChange}
         name="file"
@@ -36,7 +36,6 @@ const UploadArea: React.FC<Props> = (props) => {
       />
     </div>
   );
-}
+};
 
 export default UploadArea;
-

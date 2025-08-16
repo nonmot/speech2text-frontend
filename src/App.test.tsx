@@ -5,9 +5,9 @@ import { MemoryRouter } from 'react-router-dom';
 
 test('renders learn react link', () => {
   render(
-    <MemoryRouter initialEntries={["/"]}>
+    <MemoryRouter initialEntries={['/']}>
       <App />
-    </MemoryRouter>
+    </MemoryRouter>,
   );
   const linkElement = screen.getByText(/Speech To Text/i);
   expect(linkElement).toBeInTheDocument();
