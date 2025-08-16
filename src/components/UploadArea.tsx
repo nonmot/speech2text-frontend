@@ -1,5 +1,5 @@
-import React from "react";
-import { FileUploader } from "react-drag-drop-files";
+import React from 'react';
+import { FileUploader } from 'react-drag-drop-files';
 
 type Props = {
   files: File[] | null;
@@ -9,11 +9,11 @@ type Props = {
 const UploadArea: React.FC<Props> = (props) => {
   const { files, setFiles } = props;
 
-  const fileTypes = ["WAV"];
+  const fileTypes = ['WAV'];
 
   const handleChange = (inputFiles: File | File[]) => {
     if (Array.isArray(inputFiles)) {
-      throw new Error("Not supported uploading more than 2 files.");
+      throw new Error('Not supported uploading more than 2 files.');
     } else {
       if (files) {
         setFiles([...files, inputFiles]);

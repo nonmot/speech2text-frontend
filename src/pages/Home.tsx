@@ -1,15 +1,15 @@
-import { useState } from "react";
-import UploadArea from "../components/UploadArea";
-import ModelList from "../components/ModelList";
-import { recognize } from "../api/api";
-import KeywordSearch from "../components/KeywordSearch";
-import type { Model, KeywordHit } from "../types/types";
-import DisplayKeywordHits from "../components/KeywordHits";
-import DisplayTranscript from "../components/DisplayTranscript";
-import Loading from "../components/Loading";
+import { useState } from 'react';
+import UploadArea from '../components/UploadArea';
+import ModelList from '../components/ModelList';
+import { recognize } from '../api/api';
+import KeywordSearch from '../components/KeywordSearch';
+import type { Model, KeywordHit } from '../types/types';
+import DisplayKeywordHits from '../components/KeywordHits';
+import DisplayTranscript from '../components/DisplayTranscript';
+import Loading from '../components/Loading';
 
 const Home = () => {
-  const [transcript, setTranscrip] = useState<string | null>("");
+  const [transcript, setTranscrip] = useState<string | null>('');
   const [files, setFiles] = useState<File[] | null>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [keywords, setKeywords] = useState<string[]>([]);
@@ -19,7 +19,7 @@ const Home = () => {
 
   const handleClick = async (file: File) => {
     setIsLoading(true);
-    setTranscrip("");
+    setTranscrip('');
     setKwHits(null);
     try {
       const data = await recognize(file, model!, keywords);
@@ -29,7 +29,7 @@ const Home = () => {
       setIsLoading(false);
     } catch (error) {
       console.error(`Error: ${error}`);
-      setTranscrip("Sorry, something went wrong.");
+      setTranscrip('Sorry, something went wrong.');
       setIsLoading(false);
     }
   };
@@ -66,7 +66,7 @@ const Home = () => {
                   <li key={index} className="border-b py-2">
                     <div className="flex items-center justify-between">
                       <p className="text-gray-900 truncate max-w-xs">
-                        {file["name"]}
+                        {file['name']}
                       </p>
                       <div className="flex items-center space-x-4">
                         <button

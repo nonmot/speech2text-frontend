@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 type Props = {
   keywords: string[];
@@ -9,7 +9,7 @@ type Props = {
 const KeywordSearch: React.FC<Props> = (props) => {
   const { keywords, setKeywords, onClickDeleteKeyword } = props;
 
-  const [input, setInput] = useState<string>("");
+  const [input, setInput] = useState<string>('');
 
   const isDisabled = () => {
     if (input.length === 0 || input.length > 20) return true;
@@ -19,7 +19,7 @@ const KeywordSearch: React.FC<Props> = (props) => {
   const handleAddKeyword = () => {
     if (isDisabled()) return;
     setKeywords([...keywords, input]);
-    setInput("");
+    setInput('');
   };
 
   const onClickAddKeyword = () => {
@@ -27,7 +27,7 @@ const KeywordSearch: React.FC<Props> = (props) => {
   };
 
   const onKeyDownAddKeyword = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.nativeEvent.isComposing || e.key !== "Enter") return;
+    if (e.nativeEvent.isComposing || e.key !== 'Enter') return;
     handleAddKeyword();
   };
 

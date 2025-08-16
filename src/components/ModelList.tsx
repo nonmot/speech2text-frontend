@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { getModelList } from "../api/api";
-import type { Model } from "../types/types";
-import Loading from "./Loading";
+import React, { useState, useEffect } from 'react';
+import { getModelList } from '../api/api';
+import type { Model } from '../types/types';
+import Loading from './Loading';
 
 type Props = {
   model: Model | null;
@@ -23,7 +23,7 @@ const ModelList: React.FC<Props> = (props) => {
         const list = await getModelList();
         setModels(list);
       } catch (error: any) {
-        setError(error?.message ?? "failed to load");
+        setError(error?.message ?? 'failed to load');
       } finally {
         setIsLoading(false);
       }
@@ -62,7 +62,7 @@ const ModelList: React.FC<Props> = (props) => {
       <select
         id="models"
         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:border-blue-500 block p-2.5"
-        value={model?.name ?? ""}
+        value={model?.name ?? ''}
         onChange={onChangeSelectModel}
       >
         <option value="" disabled hidden>

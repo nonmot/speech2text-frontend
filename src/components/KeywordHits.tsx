@@ -1,5 +1,5 @@
-import React from "react";
-import { KeywordHit } from "../types/types";
+import React from 'react';
+import { KeywordHit } from '../types/types';
 
 type Props = {
   keywordHits: KeywordHit[] | null;
@@ -15,9 +15,9 @@ const DisplayKeywordHits: React.FC<Props> = (props) => {
     if (!el) return;
 
     el.scrollIntoView({
-      behavior: "smooth",
-      block: "center",
-      inline: "nearest",
+      behavior: 'smooth',
+      block: 'center',
+      inline: 'nearest',
     });
     setActiveId(id);
     window.setTimeout(

@@ -1,10 +1,10 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route } from 'react-router-dom';
 
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import Header from './components/Header';
+import Footer from './components/Footer';
 
-import Home from "./pages/Home";
-import NoMatch from "./pages/NoMatch";
+import Home from './pages/Home';
+import NoMatch from './pages/NoMatch';
 
 function App() {
   return (

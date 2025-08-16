@@ -1,5 +1,5 @@
-import React from "react";
-import type { KeywordHit } from "../types/types";
+import React from 'react';
+import type { KeywordHit } from '../types/types';
 
 type Props = {
   transcript: string | null;
@@ -28,10 +28,10 @@ const DisplayTranscript: React.FC<Props> = (props) => {
           key={id}
           id={id}
           className={
-            "rounded px-0.5 " +
+            'rounded px-0.5 ' +
             (activeId === id
-              ? "bg-yellow-300 ring-2 ring-yellow-400"
-              : "bg-yellow-200")
+              ? 'bg-yellow-300 ring-2 ring-yellow-400'
+              : 'bg-yellow-200')
           }
         >
           {transcript?.slice(hit.start, hit.end)}
@@ -53,7 +53,7 @@ const DisplayTranscript: React.FC<Props> = (props) => {
       </div>
     );
 
-  if (transcript === "")
+  if (transcript === '')
     return (
       <div className="py-5">
         <p>文字起こし結果がありません。</p>
