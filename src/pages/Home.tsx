@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import UploadArea from '../components/UploadArea';
 import ModelList from '../components/ModelList';
-import { recognize } from '../api/api';
+import { recognize, keywordSearch } from '../api/api';
 import KeywordSearch from '../components/KeywordSearch';
 import type { Model, KeywordHit } from '../types/types';
 import DisplayKeywordHits from '../components/KeywordHits';
@@ -22,10 +22,10 @@ const Home = () => {
     setTranscrip('');
     setKwHits(null);
     try {
-      const data = await recognize(file, model!, keywords);
-      console.log(data);
+      const data = await recognize(file, model!);
       setTranscrip(data.transcript);
-      setKwHits(data.highlights);
+      const highlights = await keywordSearch(data.transcript, keywords);
+      setKwHits(highlights.highlights);
       setIsLoading(false);
     } catch (error) {
       console.error(`Error: ${error}`);
