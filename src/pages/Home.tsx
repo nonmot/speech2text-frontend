@@ -1,18 +1,16 @@
 import { useState } from 'react';
 import UploadArea from '../components/UploadArea';
 import ModelList from '../components/ModelList';
-import { recognize, keywordSearch } from '../api/api';
-import KeywordSearch from '../components/KeywordSearch';
+import { recognize } from '../api/api';
 import type { Model, KeywordHit } from '../types/types';
-import DisplayKeywordHits from '../components/KeywordHits';
 import DisplayTranscript from '../components/DisplayTranscript';
+import KeywordSearch from '../features/KeywordSearch/KeywordSearch';
 import Loading from '../components/Loading';
 
 const Home = () => {
   const [transcript, setTranscrip] = useState<string | null>('');
   const [files, setFiles] = useState<File[] | null>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [keywords, setKeywords] = useState<string[]>([]);
   const [model, setModel] = useState<Model | null>(null);
   const [kwHits, setKwHits] = useState<KeywordHit[] | null>(null);
   const [activeId, setActiveId] = useState<string | null>(null);
@@ -24,8 +22,6 @@ const Home = () => {
     try {
       const data = await recognize(file, model!);
       setTranscrip(data.transcript);
-      const highlights = await keywordSearch(data.transcript, keywords);
-      setKwHits(highlights.highlights);
       setIsLoading(false);
     } catch (error) {
       console.error(`Error: ${error}`);
@@ -39,13 +35,6 @@ const Home = () => {
     const newFiles = [...files];
     newFiles.splice(index, 1);
     setFiles(newFiles);
-  };
-
-  const onClickDeleteKeyword = (index: number) => {
-    if (!keywords) return;
-    const newKeywords = [...keywords];
-    newKeywords.splice(index, 1);
-    setKeywords(newKeywords);
   };
 
   return (
@@ -105,30 +94,9 @@ const Home = () => {
             </ul>
           </div>
         </div>
-
-        <div className="flex-1">
-          <KeywordSearch
-            keywords={keywords}
-            setKeywords={setKeywords}
-            onClickDeleteKeyword={onClickDeleteKeyword}
-          />
-        </div>
       </div>
       <div className="my-10 flex bg-white rounded-lg p-7 min-h-40">
         <div className="grid grid-cols-2 space-x-4 w-full">
-          <div className="grid-span-1">
-            <h2 className="text-2xl">検索結果</h2>
-            {isLoading ? (
-              <div className="flex justify-center p-5">
-                <Loading size={40} />
-              </div>
-            ) : (
-              <DisplayKeywordHits
-                keywordHits={kwHits}
-                setActiveId={setActiveId}
-              />
-            )}
-          </div>
           <div className="grid-span-1">
             <h2 className="text-2xl">文字起こし結果</h2>
             {isLoading ? (
@@ -144,6 +112,15 @@ const Home = () => {
             )}
           </div>
         </div>
+      </div>
+
+      <div className="bg-white p-7 rounded-lg">
+        <KeywordSearch
+          transcript={transcript}
+          keywordHits={kwHits}
+          setKeywordsHits={setKwHits}
+          setActiveId={setActiveId}
+        />
       </div>
     </div>
   );

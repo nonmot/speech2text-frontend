@@ -6,7 +6,7 @@ type Props = {
   setActiveId: React.Dispatch<React.SetStateAction<string | null>>;
 };
 
-const DisplayKeywordHits: React.FC<Props> = (props) => {
+const KeywordSearchResult: React.FC<Props> = (props) => {
   const { keywordHits, setActiveId } = props;
 
   const scrollToHit = (index: number) => {
@@ -54,4 +54,4 @@ const DisplayKeywordHits: React.FC<Props> = (props) => {
   );
 };
 
-export default DisplayKeywordHits;
+export default KeywordSearchResult;

@@ -6,7 +6,7 @@ type Props = {
   onClickDeleteKeyword: Function;
 };
 
-const KeywordSearch: React.FC<Props> = (props) => {
+const KeywordSearchForm: React.FC<Props> = (props) => {
   const { keywords, setKeywords, onClickDeleteKeyword } = props;
 
   const [input, setInput] = useState<string>('');
@@ -99,4 +99,4 @@ const KeywordSearch: React.FC<Props> = (props) => {
   );
 };
 
-export default KeywordSearch;
+export default KeywordSearchForm;
