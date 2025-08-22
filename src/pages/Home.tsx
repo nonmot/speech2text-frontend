@@ -57,7 +57,7 @@ const Home: React.FC = () => {
         <div className="col-span-2 p-5">
           <h2 className="text-2xl">文字起こし結果</h2>
           {isLoading ? (
-            <div className="flex justify-center p-5">
+            <div className="flex justify-center h-full items-center p-5">
               <Loading size={40} />
             </div>
           ) : (

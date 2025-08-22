@@ -33,13 +33,12 @@ const KeywordSearchForm: React.FC<Props> = (props) => {
 
   return (
     <div>
-      <h2 className="text-2xl">ワード検索</h2>
-      <form className="py-5">
+      <form>
         <label
           htmlFor="keyword-search"
           className="block mb-2 text-md font-medium text-gray-900"
         >
-          キーワード
+          キーワード検索
         </label>
         <input
           id="keyword-search"
