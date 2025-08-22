@@ -61,7 +61,7 @@ const ModelList: React.FC<Props> = (props) => {
       </label>
       <select
         id="models"
-        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:border-blue-500 block p-2.5"
+        className="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:border-blue-500 block p-2.5"
         value={model?.name ?? ''}
         onChange={onChangeSelectModel}
       >

@@ -34,8 +34,8 @@ const Home: React.FC = () => {
   return (
     <div className="mt-10">
       <div className="flex bg-white p-7 rounded-lg">
-        <div className="flex-1">
-          <div>
+        <div className="w-full">
+          <div className="w-full">
             <h2 className="text-2xl">音声アップロード</h2>
             <ModelList model={model} setModel={setModel} />
           </div>
