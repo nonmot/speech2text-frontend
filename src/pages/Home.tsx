@@ -53,33 +53,33 @@ const Home: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className="my-10 flex bg-white rounded-lg p-7 min-h-40">
-        <div className="grid grid-cols-2 space-x-4 w-full">
-          <div className="grid-span-1">
-            <h2 className="text-2xl">文字起こし結果</h2>
-            {isLoading ? (
-              <div className="flex justify-center p-5">
-                <Loading size={40} />
-              </div>
-            ) : (
-              <DisplayTranscript
-                transcript={transcript}
-                keywordHits={kwHits}
-                activeId={activeId}
-              />
-            )}
+      <div className="my-10 bg-white rounded-lg p-7 min-h-40 grid grid-cols-3 divide-x w-full">
+        <div className="col-span-2 p-5">
+          <h2 className="text-2xl">文字起こし結果</h2>
+          {isLoading ? (
+            <div className="flex justify-center p-5">
+              <Loading size={40} />
+            </div>
+          ) : (
+            <DisplayTranscript
+              transcript={transcript}
+              keywordHits={kwHits}
+              activeId={activeId}
+            />
+          )}
+        </div>
+        <div className='col-span-1 p-5'>
+          <div className="">
+            <KeywordSearch
+              transcript={transcript}
+              keywordHits={kwHits}
+              setKeywordsHits={setKwHits}
+              setActiveId={setActiveId}
+            />
           </div>
         </div>
       </div>
 
-      <div className="bg-white p-7 rounded-lg">
-        <KeywordSearch
-          transcript={transcript}
-          keywordHits={kwHits}
-          setKeywordsHits={setKwHits}
-          setActiveId={setActiveId}
-        />
-      </div>
     </div>
   );
 };
