@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import UploadArea from '../components/UploadArea';
 import ModelList from '../components/ModelList';
-import { recognize } from '../api/api';
+import { keywordSearch, recognize } from '../api/api';
 import type { Model, KeywordHit } from '../types/types';
 import DisplayTranscript from '../components/DisplayTranscript';
 import KeywordSearch from '../features/KeywordSearch/KeywordSearch';
@@ -15,6 +15,7 @@ const Home: React.FC = () => {
   const [model, setModel] = useState<Model | null>(null);
   const [kwHits, setKwHits] = useState<KeywordHit[] | null>(null);
   const [activeId, setActiveId] = useState<string | null>(null);
+  const [keywords, setKeywords] = useState<string[]>([]);
 
   const handleClick = async (file: File) => {
     setIsLoading(true);
@@ -23,12 +24,15 @@ const Home: React.FC = () => {
     try {
       const data = await recognize(file, model!);
       setTranscrip(data.transcript);
-      setIsLoading(false);
+      if (data.transcript) {
+        const highlights = await keywordSearch(data.transcript, keywords);
+        setKwHits(highlights.highlights);
+      }
     } catch (error) {
       console.error(`Error: ${error}`);
       setTranscrip('Sorry, something went wrong.');
-      setIsLoading(false);
     }
+    setIsLoading(false);
   };
 
   return (
@@ -54,7 +58,7 @@ const Home: React.FC = () => {
         </div>
       </div>
       <div className="my-10 bg-white rounded-lg p-7 min-h-40 grid grid-cols-3 divide-x w-full">
-        <div className="col-span-2 p-5">
+        <div className="col-span-2 px-5">
           <h2 className="text-2xl">文字起こし結果</h2>
           {isLoading ? (
             <div className="flex justify-center h-full items-center p-5">
@@ -68,9 +72,11 @@ const Home: React.FC = () => {
             />
           )}
         </div>
-        <div className='col-span-1 p-5'>
+        <div className='col-span-1 px-5'>
           <div className="">
             <KeywordSearch
+              keywords={keywords}
+              setKeywords={setKeywords}
               transcript={transcript}
               keywordHits={kwHits}
               setKeywordsHits={setKwHits}

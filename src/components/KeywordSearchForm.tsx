@@ -37,11 +37,10 @@ const KeywordSearchForm: React.FC<Props> = (props) => {
         <label
           htmlFor="keyword-search"
           className="block mb-2 text-md font-medium text-gray-900"
-        >
-          キーワード検索
-        </label>
+        ></label>
         <input
           id="keyword-search"
+          placeholder='キーワード検索'
           className="border p-2 rounded w-3/4"
           type="text"
           value={input}
@@ -55,13 +54,13 @@ const KeywordSearchForm: React.FC<Props> = (props) => {
         >
           追加
         </button>
-        <p className="text-gray-500 text-sm">
-          （20文字以下で入力してください。3つまでキーワードを検索できます。）
+        <p className="text-gray-500 text-xs my-1">
+          （20文字以下で入力してください。3つまでキーワードを追加できます。）
         </p>
       </form>
 
       <div className="flex space-x-4 mt-2">
-        {keywords.length !== 0 ? (
+        {keywords && keywords.length !== 0 ? (
           keywords.map((keyword, index) => (
             <div
               data-testid={`chip`}
