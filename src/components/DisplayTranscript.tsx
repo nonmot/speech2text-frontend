@@ -28,9 +28,9 @@ const DisplayTranscript: React.FC<Props> = (props) => {
           key={id}
           id={id}
           className={
-            'rounded px-0.5 ' +
+            'rounded p-1.5 ' +
             (activeId === id
-              ? 'bg-yellow-300 ring-2 ring-yellow-400'
+              ? 'bg-yellow-400 ring-2 ring-yellow-500 transition ease-in'
               : 'bg-yellow-200')
           }
         >
@@ -60,7 +60,7 @@ const DisplayTranscript: React.FC<Props> = (props) => {
       </div>
     );
 
-  return <div className="py-5 text-xl text-gray-900">{fullNodes()}</div>;
+  return <div className="py-5 text-xl/10 text-gray-900">{fullNodes()}</div>;
 };
 
 export default DisplayTranscript;

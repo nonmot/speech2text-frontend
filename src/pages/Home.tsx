@@ -72,7 +72,7 @@ const Home: React.FC = () => {
             />
           )}
         </div>
-        <div className='col-span-1 px-5'>
+        <div className="col-span-1 px-5">
           <div className="">
             <KeywordSearch
               keywords={keywords}
@@ -85,7 +85,6 @@ const Home: React.FC = () => {
           </div>
         </div>
       </div>
-
     </div>
   );
 };

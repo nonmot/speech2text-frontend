@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="flex flex-col min-h-screen bg-gray-100">
       <Header />
-      <main className="flex-grow container mx-auto">
+      <main className="flex-grow container mx-auto max-w-screen-xl">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="*" element={<NoMatch />} />

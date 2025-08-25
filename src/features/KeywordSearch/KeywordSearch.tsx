@@ -1,28 +1,34 @@
-import { useEffect } from "react";
-import { keywordSearch } from "../../api/api";
-import KeywordSearchForm from "../../components/KeywordSearchForm";
-import KeywordSearchResult from "../../components/KeywordSearchResult";
-import type { KeywordHit } from "../../types/types";
+import { useEffect } from 'react';
+import { keywordSearch } from '../../api/api';
+import KeywordSearchForm from '../../components/KeywordSearchForm';
+import KeywordSearchResult from '../../components/KeywordSearchResult';
+import type { KeywordHit } from '../../types/types';
 
 type Props = {
   transcript: string | null;
   keywordHits: KeywordHit[] | null;
   setActiveId: React.Dispatch<React.SetStateAction<string | null>>;
-  setKeywordsHits:  React.Dispatch<React.SetStateAction<KeywordHit[]| null>>;
+  setKeywordsHits: React.Dispatch<React.SetStateAction<KeywordHit[] | null>>;
   keywords: string[];
   setKeywords: React.Dispatch<React.SetStateAction<string[]>>;
-}
+};
 
 const KeywordSearch: React.FC<Props> = (props) => {
-
-  const { transcript, keywordHits, setKeywordsHits, setActiveId, keywords, setKeywords } = props;
+  const {
+    transcript,
+    keywordHits,
+    setKeywordsHits,
+    setActiveId,
+    keywords,
+    setKeywords,
+  } = props;
 
   useEffect(() => {
     const Search = async () => {
       if (!transcript) return;
       const highlights = await keywordSearch(transcript, keywords);
       setKeywordsHits(highlights.highlights);
-    }
+    };
 
     Search();
     // eslint-disable-next-line
@@ -47,7 +53,7 @@ const KeywordSearch: React.FC<Props> = (props) => {
         setActiveId={setActiveId}
       />
     </>
-  )
-}
+  );
+};
 
 export default KeywordSearch;

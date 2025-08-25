@@ -1,12 +1,12 @@
-import { Model } from "../types/types";
+import { Model } from '../types/types';
 
 type Props = {
   files: File[] | null;
-  setFiles: React.Dispatch<React.SetStateAction<File[]| null>>;
+  setFiles: React.Dispatch<React.SetStateAction<File[] | null>>;
   handleClickRecognize: Function;
   model: Model | null;
   disabled: boolean;
-}
+};
 
 const FileList: React.FC<Props> = (props) => {
   const { files, setFiles, handleClickRecognize, disabled } = props;
@@ -64,7 +64,7 @@ const FileList: React.FC<Props> = (props) => {
         )}
       </ul>
     </>
-  )
-}
+  );
+};
 
 export default FileList;

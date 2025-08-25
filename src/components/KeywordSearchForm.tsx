@@ -40,7 +40,7 @@ const KeywordSearchForm: React.FC<Props> = (props) => {
         ></label>
         <input
           id="keyword-search"
-          placeholder='キーワード検索'
+          placeholder="キーワード検索"
           className="border p-2 rounded w-3/4"
           type="text"
           value={input}
@@ -55,7 +55,9 @@ const KeywordSearchForm: React.FC<Props> = (props) => {
           追加
         </button>
         <p className="text-gray-500 text-xs my-1">
-          （20文字以下で入力してください。3つまでキーワードを追加できます。）
+          20文字以下で入力してください。
+          <br />
+          3つまでキーワードを追加できます。
         </p>
       </form>
 

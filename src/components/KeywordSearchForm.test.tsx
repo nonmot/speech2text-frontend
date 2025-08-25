@@ -15,7 +15,7 @@ describe('KeywordSearch', () => {
       />,
     );
 
-    const input = screen.getByLabelText('キーワード');
+    const input = screen.getByPlaceholderText('キーワード検索');
     expect(input).toBeInTheDocument();
     expect(screen.getByText('検索条件なし')).toBeInTheDocument();
   });
@@ -31,7 +31,9 @@ describe('KeywordSearch', () => {
       />,
     );
 
-    const input = screen.getByLabelText('キーワード') as HTMLInputElement;
+    const input = screen.getByPlaceholderText(
+      'キーワード検索',
+    ) as HTMLInputElement;
     const addBtn = screen.getByRole('button', { name: '追加' });
 
     userEvent.type(input, 'apple');
@@ -70,7 +72,9 @@ describe('KeywordSearch', () => {
       />,
     );
 
-    const input = screen.getByLabelText('キーワード') as HTMLInputElement;
+    const input = screen.getByPlaceholderText(
+      'キーワード検索',
+    ) as HTMLInputElement;
     userEvent.type(input, 'orange');
 
     // userEvent.keyboard('{enter}') でもよいが、key と composing の制御を明示
@@ -93,7 +97,9 @@ describe('KeywordSearch', () => {
       />,
     );
 
-    const input = screen.getByLabelText('キーワード') as HTMLInputElement;
+    const input = screen.getByPlaceholderText(
+      'キーワード検索',
+    ) as HTMLInputElement;
     userEvent.type(input, 'か');
 
     // nativeEvent.isComposing を true にして Enter
@@ -145,7 +151,9 @@ describe('KeywordSearch', () => {
       />,
     );
 
-    const input = screen.getByLabelText('キーワード') as HTMLInputElement;
+    const input = screen.getByPlaceholderText(
+      'キーワード検索',
+    ) as HTMLInputElement;
     const addBtn = screen.getByRole('button', { name: '追加' });
 
     userEvent.type(input, 'beta');
