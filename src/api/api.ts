@@ -17,6 +17,7 @@ export const recognize = async (file: File, model: Model) => {
 };
 
 export const keywordSearch = async (text: string, keywords: string[]) => {
+  if (!text || keywords.length === 0) return { highlight: [] };
   const res = await fetch(`${URL}/api/v1/search`, {
     method: 'POST',
     headers: {

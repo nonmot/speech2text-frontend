@@ -1,5 +1,5 @@
 import { screen, render, within, fireEvent } from '@testing-library/react';
-import KeywordSearch from './KeywordSearch';
+import KeywordSearchForm from './KeywordSearchForm';
 import userEvent from '@testing-library/user-event';
 
 describe('KeywordSearch', () => {
@@ -8,14 +8,14 @@ describe('KeywordSearch', () => {
     const setKeywords = jest.fn();
     const onClickDeleteKeyword = jest.fn();
     render(
-      <KeywordSearch
+      <KeywordSearchForm
         keywords={keywords}
         setKeywords={setKeywords}
         onClickDeleteKeyword={onClickDeleteKeyword}
       />,
     );
 
-    const input = screen.getByLabelText('キーワード');
+    const input = screen.getByPlaceholderText('キーワード検索');
     expect(input).toBeInTheDocument();
     expect(screen.getByText('検索条件なし')).toBeInTheDocument();
   });
@@ -24,14 +24,16 @@ describe('KeywordSearch', () => {
     const setKeywords = jest.fn();
     const onClickDeleteKeyword = jest.fn();
     render(
-      <KeywordSearch
+      <KeywordSearchForm
         keywords={[]}
         setKeywords={setKeywords}
         onClickDeleteKeyword={onClickDeleteKeyword}
       />,
     );
 
-    const input = screen.getByLabelText('キーワード') as HTMLInputElement;
+    const input = screen.getByPlaceholderText(
+      'キーワード検索',
+    ) as HTMLInputElement;
     const addBtn = screen.getByRole('button', { name: '追加' });
 
     userEvent.type(input, 'apple');
@@ -47,7 +49,7 @@ describe('KeywordSearch', () => {
     const setKeywords = jest.fn();
     const onClickDeleteKeyword = jest.fn();
     render(
-      <KeywordSearch
+      <KeywordSearchForm
         keywords={[]}
         setKeywords={setKeywords}
         onClickDeleteKeyword={onClickDeleteKeyword}
@@ -63,14 +65,16 @@ describe('KeywordSearch', () => {
     const setKeywords = jest.fn();
     const onClickDeleteKeyword = jest.fn();
     render(
-      <KeywordSearch
+      <KeywordSearchForm
         keywords={[]}
         setKeywords={setKeywords}
         onClickDeleteKeyword={onClickDeleteKeyword}
       />,
     );
 
-    const input = screen.getByLabelText('キーワード') as HTMLInputElement;
+    const input = screen.getByPlaceholderText(
+      'キーワード検索',
+    ) as HTMLInputElement;
     userEvent.type(input, 'orange');
 
     // userEvent.keyboard('{enter}') でもよいが、key と composing の制御を明示
@@ -86,14 +90,16 @@ describe('KeywordSearch', () => {
     const setKeywords = jest.fn();
     const onClickDeleteKeyword = jest.fn();
     render(
-      <KeywordSearch
+      <KeywordSearchForm
         keywords={[]}
         setKeywords={setKeywords}
         onClickDeleteKeyword={onClickDeleteKeyword}
       />,
     );
 
-    const input = screen.getByLabelText('キーワード') as HTMLInputElement;
+    const input = screen.getByPlaceholderText(
+      'キーワード検索',
+    ) as HTMLInputElement;
     userEvent.type(input, 'か');
 
     // nativeEvent.isComposing を true にして Enter
@@ -113,7 +119,7 @@ describe('KeywordSearch', () => {
     const setKeywords = jest.fn();
     const onClickDeleteKeyword = jest.fn();
     render(
-      <KeywordSearch
+      <KeywordSearchForm
         keywords={keywords}
         setKeywords={setKeywords}
         onClickDeleteKeyword={onClickDeleteKeyword}
@@ -138,14 +144,16 @@ describe('KeywordSearch', () => {
     const setKeywords = jest.fn();
     const onClickDeleteKeyword = jest.fn();
     render(
-      <KeywordSearch
+      <KeywordSearchForm
         keywords={['alpha']}
         setKeywords={setKeywords}
         onClickDeleteKeyword={onClickDeleteKeyword}
       />,
     );
 
-    const input = screen.getByLabelText('キーワード') as HTMLInputElement;
+    const input = screen.getByPlaceholderText(
+      'キーワード検索',
+    ) as HTMLInputElement;
     const addBtn = screen.getByRole('button', { name: '追加' });
 
     userEvent.type(input, 'beta');
