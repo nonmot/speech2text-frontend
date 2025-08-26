@@ -13,9 +13,6 @@ const Header = () => {
           <Link to="#" className="text-gray-600 hover:text-blue-500">
             About
           </Link>
-          <Link to="#" className="text-gray-600 hover:text-blue-500">
-            Contact
-          </Link>
         </nav>
       </div>
     </header>
